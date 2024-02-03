@@ -50,10 +50,12 @@ public class Robot extends TimedRobot {
     if (ally.isPresent()) {
       if (ally.get() == Alliance.Red) {
         Constants.VisionConstants.SpeakerID = 4;
+        Constants.VisionConstants.farSpeakerID = 1;
         Constants.VisionConstants.AmpID = 5;
       }
       if (ally.get() == Alliance.Blue) {
         Constants.VisionConstants.SpeakerID = 7;
+        Constants.VisionConstants.farSpeakerID = 2;
         Constants.VisionConstants.AmpID = 6;
       }
     }
@@ -134,6 +136,22 @@ public class Robot extends TimedRobot {
     // this line or comment it out.
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
+    }
+    Optional<Alliance> ally = DriverStation.getAlliance();
+    if (ally.isPresent()) {
+      if (ally.get() == Alliance.Red) {
+        Constants.VisionConstants.SpeakerID = 4;
+        Constants.VisionConstants.farSpeakerID = 1;
+        Constants.VisionConstants.AmpID = 5;
+      }
+      if (ally.get() == Alliance.Blue) {
+        Constants.VisionConstants.SpeakerID = 7;
+        Constants.VisionConstants.farSpeakerID = 2;
+        Constants.VisionConstants.AmpID = 6;
+      }
+    }
+    else {
+
     }
   }
 

@@ -42,6 +42,7 @@ public class RobotContainer {
   private final JoystickButton IncreasePos = new JoystickButton(m_driverController, XboxController.Button.kA.value);
   private final JoystickButton DecreasePos = new JoystickButton(m_driverController, XboxController.Button.kY.value);
   private final JoystickButton trackFour = new JoystickButton(m_driverController, XboxController.Button.kB.value);
+  private final JoystickButton getDist = new JoystickButton(m_driverController, XboxController.Button.kLeftBumper.value);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -71,7 +72,8 @@ public class RobotContainer {
       ZeroPos.onTrue(new InstantCommand(() -> m_MotorTesting.changePos(180)));
       IncreasePos.onTrue(new InstantCommand(() -> m_MotorTesting.changePos(10))).onFalse(new InstantCommand(() -> m_MotorTesting.changePos(0)));
       DecreasePos.onTrue(new InstantCommand(() -> m_MotorTesting.changePos(-10))).onFalse(new InstantCommand(() -> m_MotorTesting.changePos(0)));
-      trackFour.whileTrue(v_VisionSubsystem.AimAtApril(m_MotorTesting, 4, 0));
+      trackFour.whileTrue(v_VisionSubsystem.AimAtApril(m_MotorTesting, Constants.VisionConstants.SpeakerID, 0));
+      getDist.onTrue(new InstantCommand(() -> v_VisionSubsystem.getDist()));
   }
 
   /**

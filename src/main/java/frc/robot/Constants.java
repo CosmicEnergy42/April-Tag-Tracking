@@ -43,6 +43,7 @@ public final class Constants {
 
   public static class VisionConstants{
     public static int SpeakerID = 0;
+    public static int farSpeakerID = 0;
     public static int AmpID = 0;
   }
 
